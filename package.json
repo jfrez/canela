@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "discord-bot": "^0.2.16",
-    "discord.js": "^12.2.0"
+    "discord.js": "^12.2.0",
+    "ytdl-core": "^3.2.0"
   }
 }
