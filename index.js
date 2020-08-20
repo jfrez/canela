@@ -8,12 +8,12 @@ client.on('ready', () => {
 });
 client.on('message', msg => {
 	if (msg.content.includes('comida')) {
-		msg.reply('woff');
+		msg.reply('http://gph.is/1PAiJgM');
 	}
 	if (msg.content === ('canela help')) {
-		msg.reply('woff woff:  canela habla ,  comida');
+		msg.reply('woff woff:  canela habla [yt code], canela callate*, *comida*, canela muerde [user]');
 	}
-	if (msg.content.startsWith('canela habla')) {
+	if (msg.content.startsWith('canela habla') || msg.content.startsWith('canela ladra')) {
 		if (msg.channel.type !== 'text') return;
 		const voiceChannel =msg.member.voice.channel;
 
@@ -27,11 +27,29 @@ client.on('message', msg => {
 			if(typeof song != "undefined")
 				stream = ytdl('https://www.youtube.com/watch?v='+song, { filter: 'audioonly' });
 			else
-				stream = ytdl('https://www.youtube.com/watch?v=lTRiuFIWV54', { filter: 'audioonly' });
+				stream = ytdl('https://www.youtube.com/watch?v=9sLR0vgpeWI', { filter: '' });
 			const dispatcher = connection.play(stream);
 			msg.reply('<#'+voiceChannel.id+'> woff');
 			dispatcher.on('finish', () => voiceChannel.leave());
 		});
+	}
+	if (msg.content.startsWith('canela callate')) {
+		if (msg.channel.type !== 'text') return;
+		const voiceChannel =msg.member.voice.channel;
+
+		if (!voiceChannel) {
+			return msg.reply('grrrr');
+		}
+		var song = msg.content.split(' ');
+		song = song[2];
+		voiceChannel.join().then(connection => {
+			var stream;
+			stream = ytdl('https://www.youtube.com/watch?v=18e4XNUxo6k', { filter: '' });
+			const dispatcher = connection.play(stream);
+			msg.reply('<#'+voiceChannel.id+'> woff');
+			dispatcher.on('finish', () => voiceChannel.leave());
+
+	});
 	}
 	if (msg.content.startsWith("canela muerde")) {
 		if (msg.member.hasPermission("KICK_MEMBERS")) {
@@ -43,9 +61,8 @@ client.on('message', msg => {
 				});
 			}
 		}else{
-				 msg.reply('woff ¬¬');
+				 msg.reply('http://gph.is/1UW9uLn');
 		}
 	}
 });
-
-                client.login('token');
+                client.login('');
